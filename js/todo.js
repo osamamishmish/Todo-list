@@ -24,7 +24,7 @@ var arrClearing=[];
 var refArr=[];
 var indexArr=[];
 console.log(arr);
-
+console.log(arr1);
 
 
 //create the buttons
