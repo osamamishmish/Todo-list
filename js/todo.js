@@ -23,7 +23,7 @@ var arrX=[];
 var arrClearing=[];
 var refArr=[];
 var indexArr=[];
-
+console.log(arr);
 
 
 
