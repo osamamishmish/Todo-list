@@ -655,8 +655,8 @@ console.log("arrX",arrXcomp);
 
 //title
 $(document).ready(function(){
-    $(".header").css("width","100%").children().css("width","100%");
-    $(parag).prependTo(".container").text('T'+' '+'O'+' '+'D'+' '+'O').css({
+    $(".header-img").css("width","100%").children().css("width","100%");
+    $(parag).prependTo(".header-container").text('T'+' '+'O'+' '+'D'+' '+'O').css({
         "color":"white",
         "fontFamily" :"arial",
     });

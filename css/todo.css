@@ -5,15 +5,15 @@ body{
     grid-template-rows: 60px 60px  20px 60px 25px repeat(6,60px) 60px 90px;
     grid-template-columns:518px 25px 100px 350px 25px 518px;
 }
-.header{
+.header-img{
     grid-area:1/1/5/7;
 }
-.container{
+.header-container{
     grid-area:2/2/3/6;
     display:flex;
     flex-flow:row;
 }
-.container p{
+.header-container p{
     grid-area:2/2/3/4;
     font-size:30px;
 }
