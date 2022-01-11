@@ -54,7 +54,10 @@ $(document).ready(function(){
     
 });
 
-
+$(function(){
+    "use strict";
+    $(".nav-link").eq(1).removeClass("disabled");
+})
 
 
 
@@ -81,7 +84,7 @@ $(document).ready(function(){
             
             
            $(".input").css("textDecoration","none");
-         $(".buttons").eq(0).text($(content).length+"items");
+         $(".nav-link").eq(0).text($(content).length+"items");
   var newDiv=document.createElement("div"),
   theTitle=document.createElement("p"),
   radio = document.createElement("input"),
