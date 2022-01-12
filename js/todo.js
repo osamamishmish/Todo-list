@@ -54,6 +54,12 @@ $(document).ready(function(){
     
 });
 
+
+
+
+
+
+
 $(function(){
     "use strict";
     var theNavButton = document.querySelectorAll(".navbar-nav button");
@@ -92,6 +98,7 @@ $(document).ready(function(){
             
            $(".input").css("textDecoration","none");
          $(".nav-link").eq(0).text($(content).length+"items");
+         $(".counter").text($(content).length+"items");
   var newDiv=document.createElement("div"),
   theTitle=document.createElement("p"),
   radio = document.createElement("input"),
@@ -154,7 +161,7 @@ $(document).ready(function(){
              $(this).children().eq(1).removeAttr("id");
          })
          $(".nav-link").eq(0).text($(content).length+"items");
-         
+         $(".counter").text($(content).length+"items");
         }
         
         $(radio).on("click",function(){
@@ -216,10 +223,12 @@ $(document).ready(function(){
       }
     }
     $(".nav-link").eq(0).text($(content).length+"items");
+    $(".counter").text($(content).length+"items");
     }) 
     
     $(".nav-link").eq(4).on("click",function(){
         $(".nav-link").eq(0).text($(content).length+"items");
+        $(".counter").text($(content).length+"items");
     })   
     
 } 
@@ -236,6 +245,7 @@ $(document).ready(function(){
 $(document).ready(function(){
    
     $(".nav-link").eq(4).on("click",function(){
+        $(".navbar-collapse").removeClass("show");
       $("div[id='comp-list']").remove();
       $("div[id='comp-content']").remove();
     
@@ -268,10 +278,13 @@ console.log("arrConv",arrConv);
 //ALL
 $(document).ready(function(){
     $(".nav-link").eq(1).on("click",function(){
+        $(".navbar-collapse").removeClass("show");
+        $(".the-menu").text($(".nav-link").eq(1).text());
         theRadio.checked=false;
         $(".input").on("keyup",function(e){
             if(e.keyCode===13){
                 $(".nav-link").eq(0).text($(content).length+"items");
+                $(".counter").text($(content).length+"items");
             }
         })
         $(".nav-link").eq(1).addClass("nav-color");
@@ -287,6 +300,7 @@ $(document).ready(function(){
        $("#comp-list").remove();
         
         $(".nav-link").eq(0).text($(content).length+"items");
+        $(".counter").text($(content).length+"items");
          for(let index=0;index<content.length ; index++){
             var newDiv=document.createElement("div"),
             theTitle=document.createElement("p"),
@@ -343,6 +357,7 @@ $(document).ready(function(){
                 $(this).children().eq(1).removeAttr("id");
              })
              $(".nav-link").eq(0).text($(content).length+"items");
+             $(".counter").text($(content).length+"items");
              
             }
             $(".circle").on("click",function(){
@@ -402,10 +417,12 @@ $(document).ready(function(){
           }
         }
         $(".nav-link").eq(0).text($(content).length+"items");
+        $(".counter").text($(content).length+"items");
         })
         
         $(".nav-link").eq(4).on("click",function(){
             $(".nav-link").eq(0).text($(content).length+"items");
+            $(".counter").text($(content).length+"items");
         })
       //  $(".buttons").eq(0).text($(content).length+"items");   
     })
@@ -422,10 +439,13 @@ $(document).ready(function(){
 $(document).ready(function(){
     
     $(".nav-link").eq(3).on("click",function(){
+        $(".navbar-collapse").removeClass("show");
+        $(".the-menu").text($(".nav-link").eq(3).text());
         theRadio.checked=true;
 $(".input").on("keyup",function(e){
 if(e.keyCode===13){
     $(".nav-link").eq(0).text($(compArr).length+"items");
+    $(".counter").text($(compArr).length+"items");
 }
 })
 $(".nav-link").eq(3).addClass("nav-color");
@@ -439,6 +459,7 @@ $(".nav-link").eq(1).removeClass("nav-color");
      $("#act-content").remove();
       /* $(".list-footer").show();*/
       $(".nav-link").eq(0).text($(compArr).length+"items");
+      $(".counter").text($(compArr).length+"items");
      for(let i =0 ; i<compArr.length;i++){
             var newDiv=document.createElement("div"),
             theTitle=document.createElement("p"),
@@ -485,6 +506,7 @@ $(".nav-link").eq(1).removeClass("nav-color");
         }
         $(".nav-link").eq(4).on("click",function(){
             $(".nav-link").eq(0).text($(compArr).length+"items");
+            $(".counter").text($(compArr).length+"items");
         })
     })
 })
@@ -500,10 +522,13 @@ $(".nav-link").eq(1).removeClass("nav-color");
 $(document).ready(function(){
     $(".nav-link").eq(2).on("click",function(){
         "use strict";
+        $(".navbar-collapse").removeClass("show");
+        $(".the-menu").text($(".nav-link").eq(2).text());
         theRadio.checked=false;
         $(".input").on("keyup",function(e){
             if(e.keyCode===13){
                 $(".nav-link").eq(0).text($(actArr).length+"items");
+                $(".counter").text($(actArr).length+"items");
             }
             })
             $(".nav-link").eq(2).addClass("nav-color");
@@ -516,6 +541,7 @@ $(document).ready(function(){
         
         
         $(".nav-link").eq(0).text($(actArr).length+"items");
+        $(".counter").text($(actArr).length+"items");
        
         for(let i =0 ; i<actArr.length;i++){
             var newDiv=document.createElement("div"),
@@ -561,6 +587,7 @@ $(document).ready(function(){
                      
         }
         $(".nav-link").eq(0).text($(actArr).length+"items");
+        $(".counter").text($(actArr).length+"items");
     })
 })
 
@@ -574,6 +601,7 @@ $(document).ready(function(){
     $(".nav-link").eq(2).on("click",function(){
             $(".clear").on("click",function(){
                 $(".nav-link").eq(0).text($(actArr).length+"items");
+                $(".counter").text($(actArr).length+"items");
                 console.log("sssss")
                 
                 arr2.push($("#clicked").prev().text());
@@ -606,6 +634,7 @@ $(document).ready(function(){
                 }
                 
                 $(".nav-link").eq(0).text($(actArr).length+"items");
+                $(".counter").text($(actArr).length+"items");
             })
             
            // $(".buttons").eq(0).text($("#act-content").children().length+"items");           
@@ -624,6 +653,7 @@ $(document).ready(function(){
     $(".nav-link").eq(3).on("click",function(){
             $(".clear").on("click",function(){
                 $(".nav-link").eq(0).text($(compArr).length+"items");
+                $(".counter").text($(compArr).length+"items");
                 arr3.push($("#clicked").prev().text());
                 refArr.push($("#clicked").prev().text());
                 console.log(arr3);
@@ -643,11 +673,14 @@ $(document).ready(function(){
                         indexArr=[];
                     }
                     $(".nav-link").eq(0).text($(compArr).length+"items");
+                    $(".counter").text($(compArr).length+"items");
+                    
                 }
                 for(let i=0;i<refArr.length;i++){
                     var compRemoved=compArr.indexOf(arr3[0]);
                     compArr.splice(compRemoved,1);
                     $(".nav-link").eq(0).text($(compArr).length+"items");
+                    $(".counter").text($(compArr).length+"items");
                     arr3.shift();
                     if(i==refArr.length-1){
                         refArr=[];
@@ -658,6 +691,7 @@ $(document).ready(function(){
                
             })
             $(".nav-link").eq(0).text($(compArr).length+"items");
+            $(".counter").text($(compArr).length+"items");
            // $(".buttons").eq(0).text($("#comp-content").children().length+"items");
                         
        
@@ -716,8 +750,9 @@ $(".mode").on("click",function(){
     $(".navbar-nav button").css({
         "border":"1px solid hsl(0, 0%, 98%)",
         "backgroundColor":"hsl(0, 0%, 98%)",
-        "color":"#0d6efd",
+        "color":"black",
     });
+    $(".navbar-toggler-icon").css("backgroundColor","lightgrey");
     $(".added-one").css({
         "backgroundColor":"hsl(0, 0%, 98%)",
         "color":"black",
@@ -751,8 +786,9 @@ $(".mode").on("click",function(){
      $(".navbar-nav button").css({
         "border":"1px solid hsl(235,24%,19%)",
         "backgroundColor":"hsl(235,24%,19%)",
-        "color":"#0d6efd",
+        "color":"lightgrey",
     });
+    $(".navbar-toggler-icon").css("color","black");
         $(".navbar").css("backgroundColor","hsl(235,24%,19%)");
         $(".added-one").css({
             "backgroundColor":"hsl(235,24%,19%)",

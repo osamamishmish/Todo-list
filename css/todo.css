@@ -460,4 +460,19 @@ margin-right:10px;
     border:1px solid hsl(233, 14%, 35%);
 }
 
-
+@media (max-width:768px){
+    .counter{
+        display:visible;
+    }
+    .the-menu{
+        display:visible;
+    }
+}
+@media (min-width:768px){
+    .counter{
+        display:none;
+    }
+    .the-menu{
+        display:none;
+    }
+}
