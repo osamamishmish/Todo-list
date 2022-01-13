@@ -1,13 +1,7 @@
 
 var theContainer=document.querySelector(".the-list");
 var parag =document.createElement("p");  
-var buttons =[
-    "0 items ",
-    "All",
-    "Active",
-    "Completed",
-    "Clear Completed",
-];
+
 var completedInput=document.querySelector(".comp-input");
 var theRadio =document.querySelector(".radio-button");
 var input = document.querySelector(".input");
@@ -27,32 +21,7 @@ console.log(arr);
 console.log(arr1);
 
 
-//create the buttons
-function createNode(){
-    "use strict";
-    var pContainer=document.createElement("div");
-    $(".list-footer").prepend(pContainer);
-    pContainer.classList.add("the-button-container");
-    
-};
-createNode();
-var todo = document.querySelectorAll(".title");
-$(document).ready(function(){
-    for(let x=0; x<buttons.length;x++){
-        var theButtons = document.createElement("button");
-        $(theButtons).appendTo(".the-button-container").text(buttons[x]).addClass("buttons");
-        $(".buttons").eq(4).attr("id","clear-button");
-        $(".buttons").eq(1).css("color","hsl(234, 39%, 85%)")
-        $(".buttons").eq(1).attr("id","all-content");
-        $(theButtons).on("mouseenter",function(){
-            $(this).addClass("button-style");
-        })
-        $(theButtons).on("mouseleave",function(){
-            $(this).removeClass("button-style");
-        })
-    }
-    
-});
+
 
 
 
@@ -290,10 +259,6 @@ $(document).ready(function(){
         $(".nav-link").eq(1).css("color","#0d6efd");
         $(".nav-link").eq(2).css("color","darkgrey");
         $(".nav-link").eq(3).css("color","darkgrey");
-        
-       /* $(".buttons").eq(1).css("color","hsl(234, 39%, 85%)");
-        $(".buttons").eq(2).css("color","hsl(233, 14%, 35%)");
-        $(".buttons").eq(3).css("color","hsl(233, 14%, 35%)");*/
         $("#act-content").remove();
         $("#comp-content").remove();
         $(".added-content").remove();
@@ -424,8 +389,7 @@ $(document).ready(function(){
         $(".nav-link").eq(4).on("click",function(){
             $(".nav-link").eq(0).text($(content).length+"items");
             $(".counter").text($(content).length+"items");
-        })
-      //  $(".buttons").eq(0).text($(content).length+"items");   
+        }) 
     })
 })  
  
@@ -453,13 +417,9 @@ if(e.keyCode===13){
 $(".nav-link").eq(3).css("color","#0d6efd");
 $(".nav-link").eq(2).css("color","darkgrey");
 $(".nav-link").eq(1).css("color","darkgrey");
-       /* $(".buttons").eq(3).css("color","hsl(234, 39%, 85%)");
-        $(".buttons").eq(2).css("color","hsl(233, 14%, 35%)");
-        $(".buttons").eq(1).css("color","hsl(233, 14%, 35%)"); */
      $(".added-one").remove();
      $(".added-content").remove();
      $("#act-content").remove();
-      /* $(".list-footer").show();*/
       $(".nav-link").eq(0).text($(compArr).length+"items");
       $(".counter").text($(compArr).length+"items");
      for(let i =0 ; i<compArr.length;i++){
@@ -638,8 +598,7 @@ $(document).ready(function(){
                 $(".nav-link").eq(0).text($(actArr).length+"items");
                 $(".counter").text($(actArr).length+"items");
             })
-            
-           // $(".buttons").eq(0).text($("#act-content").children().length+"items");           
+                       
                        
         
     })
@@ -694,7 +653,6 @@ $(document).ready(function(){
             })
             $(".nav-link").eq(0).text($(compArr).length+"items");
             $(".counter").text($(compArr).length+"items");
-           // $(".buttons").eq(0).text($("#comp-content").children().length+"items");
                         
        
     })
@@ -747,7 +705,6 @@ $(".mode").on("click",function(){
     $(".head-of-list").css("backgroundColor","hsl(0, 0%, 98%)");
     $(".input").css("backgroundColor","hsl(0, 0%, 98%)");
     $(".input").css("color","black");
- //  $(".nav-link").css("backgroundColor","hsl(0, 0%, 98%)");
     $(".navbar").css("backgroundColor","hsl(0, 0%, 98%)");
     $(".navbar-nav button").css({
         "border":"1px solid hsl(0, 0%, 98%)",
