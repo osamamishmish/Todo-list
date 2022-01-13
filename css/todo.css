@@ -35,6 +35,9 @@ body{
     
 
 }
+.title{
+    overflow-x: scroll;
+}
 @media (min-width: 1200px){
 .navbar-expand-xl .navbar-nav .nav-link {
     padding-right: 2rem;
@@ -284,14 +287,19 @@ cursor:pointer;
     
    
 }
-@media (max-width:600px){
+@media (max-width:766px){
     .container{
         position:absolute;
         z-index:3;
         margin-top:10px;
+        width:100%;
+      /*  overflow-x: scroll;*/
     }
     .header-container p {
         font-size:25px;
+    }
+    .mode{
+        width:25px;
     }
    
 }
