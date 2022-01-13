@@ -117,12 +117,10 @@ body{
 .all-button{
     color:#0d6efd;
 }
-.nav-color{
-    color:#0d6efd;
-}
-.navbar-toggler{
+
+/*.navbar-toggler{
     color:hsl(234, 39%, 85%);
-}
+}*/
 /*.header-img{
     grid-area:1/1/5/7;
 }*/
@@ -459,7 +457,12 @@ margin-right:10px;
     background-color:hsl(233, 14%, 35%);
     border:1px solid hsl(233, 14%, 35%);
 }
-
+.navbar-nav button:hover{
+    color:#0d6efd;
+}
+.nav-color{
+    color:#0d6efd;
+}
 @media (max-width:768px){
     .counter{
         display:visible;

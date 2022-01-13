@@ -62,23 +62,23 @@ $(document).ready(function(){
 
 $(function(){
     "use strict";
-    var theNavButton = document.querySelectorAll(".navbar-nav button");
-    $(theNavButton).on("mouseenter",function(){
-        $(this).addClass("nav-color");
-    })
-    $(theNavButton).on("mouseleave",function(){
-        $(this).removeClass("nav-color");
-    })
+    $.theImageSrc = $(".header-image").attr("src");
     
+        $(".navbar-nav button").eq(4).on("mouseenter",function(){
+            $(this).css("color","#0d6efd");
+        })
+        $(".navbar-nav button").eq(4).on("mouseleave",function(){
+            $(this).css("color","darkgrey")
+        })
 })
 
 //
-
+$(".nav-link").eq(1).css("color","#0d6efd");
 //starting content
 $(document).ready(function(){  
     $(".input").on("keyup",function(e){
         if(e.keyCode===13){
-            $(".nav-link").eq(1).addClass("all-button");
+           
             if(theRadio.checked){
                 $(".input").css("textDecoration","line-through");
                 content.push({title:input.value ,status:"completed"});
@@ -287,9 +287,10 @@ $(document).ready(function(){
                 $(".counter").text($(content).length+"items");
             }
         })
-        $(".nav-link").eq(1).addClass("nav-color");
-        $(".nav-link").eq(2).removeClass("nav-color");
-        $(".nav-link").eq(3).removeClass("nav-color");
+        $(".nav-link").eq(1).css("color","#0d6efd");
+        $(".nav-link").eq(2).css("color","darkgrey");
+        $(".nav-link").eq(3).css("color","darkgrey");
+        
        /* $(".buttons").eq(1).css("color","hsl(234, 39%, 85%)");
         $(".buttons").eq(2).css("color","hsl(233, 14%, 35%)");
         $(".buttons").eq(3).css("color","hsl(233, 14%, 35%)");*/
@@ -448,9 +449,10 @@ if(e.keyCode===13){
     $(".counter").text($(compArr).length+"items");
 }
 })
-$(".nav-link").eq(3).addClass("nav-color");
-$(".nav-link").eq(2).removeClass("nav-color");
-$(".nav-link").eq(1).removeClass("nav-color");
+
+$(".nav-link").eq(3).css("color","#0d6efd");
+$(".nav-link").eq(2).css("color","darkgrey");
+$(".nav-link").eq(1).css("color","darkgrey");
        /* $(".buttons").eq(3).css("color","hsl(234, 39%, 85%)");
         $(".buttons").eq(2).css("color","hsl(233, 14%, 35%)");
         $(".buttons").eq(1).css("color","hsl(233, 14%, 35%)"); */
@@ -531,9 +533,9 @@ $(document).ready(function(){
                 $(".counter").text($(actArr).length+"items");
             }
             })
-            $(".nav-link").eq(2).addClass("nav-color");
-            $(".nav-link").eq(1).removeClass("nav-color");
-            $(".nav-link").eq(3).removeClass("nav-color");
+            $(".nav-link").eq(2).css("color","#0d6efd");
+        $(".nav-link").eq(1).css("color","darkgrey");
+        $(".nav-link").eq(3).css("color","darkgrey");
     $(".added-content").remove();
     $(".added-one").remove();
        $("#comp-content").remove();
@@ -752,6 +754,7 @@ $(".mode").on("click",function(){
         "backgroundColor":"hsl(0, 0%, 98%)",
         "color":"black",
     });
+    $(".nav-link").css("color","black");
     $(".navbar-toggler-icon").css("backgroundColor","lightgrey");
     $(".added-one").css({
         "backgroundColor":"hsl(0, 0%, 98%)",
@@ -782,12 +785,13 @@ $(".mode").on("click",function(){
         $(".head-of-list").css("backgroundColor","hsl(235,24%,19%)");
         $(".input").css("backgroundColor","hsl(235,24%,19%)");
         $(".input").css("color","lightgrey");
-     //   $(".nav-link").css("backgroundColor","hsl(235,24%,19%)");
+        
      $(".navbar-nav button").css({
         "border":"1px solid hsl(235,24%,19%)",
         "backgroundColor":"hsl(235,24%,19%)",
         "color":"lightgrey",
     });
+   
     $(".navbar-toggler-icon").css("color","black");
         $(".navbar").css("backgroundColor","hsl(235,24%,19%)");
         $(".added-one").css({
