@@ -35,7 +35,7 @@ if(e.keyCode===13){
             theTodo=document.createElement("p"),
             theClear=document.createElement("span");
             $(theContainer).appendTo(".the-content").addClass("comp-content");
-            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2");
+            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2").attr("checked",true);
             $(theTodo).appendTo(theContainer).text(theInput.value).addClass("comp-todos col-8");
             $(theClear).appendTo(theContainer).text("X").addClass("clear col-2 ms-auto").hide();
     }else{
@@ -75,7 +75,45 @@ $(document).ready(function(){
 })
 
 
+$(document).ready(function(){
+    $(".checking").click(function(){
+        if($(this).prop("checked") == true){
+           var indexOfComp=content.indexOf($(this).siblings().next().text());
+           content[indexOfComp].status="active";
+           $(".checking").siblings().next().toggleClass("comp-todos act-todos");
+           $(".checking").parent().toggleClass("comp-content act-content");
+           $(this).prop("checked") = false;
+        }
+        else if($(this).prop("checked") == false){
+            var indexOfAct=content.indexOf($(this).siblings().next().text());
+           content[indexOfAct].status="completed";
+           $(".checking").siblings().next().toggleClass("comp-todos act-todos");
+           $(".checking").parent().toggleClass("comp-content act-content");
+           $(this).prop("checked") = true;
+        }
+    });
+})
 
+/*$(document).ready(function(){
+    
+        for(let index=0 ;index<content.length;index++){
+           if($(".checking").eq(index).attr("checked")==true&&content[index].status=="completed"){
+
+           $(".checking").eq(index).on("click",function(){
+
+           
+           // if($(this).siblings().next().text()==content[index].title&& content[index].status=="completed"){
+                content[index].status="active";
+                $(".checking").eq(index).siblings().next().toggleClass("comp-todos act-todos");
+                $(".checking").eq(index).parent().toggleClass("comp-content act-content");
+                //$(this).parent().addClass("act-content");
+         //   }
+         
+})
+        }
+        }
+    
+})*/
 
 /*$(function(){
     "use strict";
