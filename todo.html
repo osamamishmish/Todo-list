@@ -17,26 +17,33 @@
             </div>
         </div>
         
-          <div class="container col-6">
+          <div class="container col-lg-6 col-sm-12">
             <div class="row">
               <div class="header-container">
                 <img src="images/icon-sun.svg" class=" mode"/>
               </div>
               <div class="head-of-list ">
-                <input type="radio"class="radio-button "/>
+                <input type="checkbox" class="check-field"/>
                 <input type="text" placeholder="Create a new todo" class="input "/>
             </div>
             <div class="the-list">
-                
-                <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-xl navbar-dark ">
-                    <div class="container-fluid">
+               <div class="row the-buttons">
+                <button class="counter col" >0 items</button>
+                <button class="all col">All</button>
+                <button class="active-list col" >Active</button>
+                <button class="completed col">Completed</button>
+                <button class="clear-completed col">Clear completed</button>
+               </div> 
+               <div class="row the-content"></div>
+             <!--   <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-xl navbar-dark ">
+                    <div class="container-fluid ">
                       <span class="counter">0 items</span>
                       <span class="the-menu"></span>
                       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                       </button>
-                      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
+                      <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                        <div class="navbar-nav ">
                           <button class="nav-link active" aria-current="page" >0 items</button>
                           <button class="nav-link ">All</button>
                           <button class="nav-link  " >Active</button>
@@ -45,15 +52,21 @@
                         </div>
                       </div>
                     </div>
-                  </nav>
+                  </nav>-->
                   
             
         </div>
-                
+        
               </div>
+              <div class="row">
+                <span class="d-flex justify-content-center footer">Choose which list you want to start fill your list</span>
+                </div>
+             
        </div>
    
- 
+       
+        
+      
     
 
 <script src="jQuery/jquery-3.6.0.js"></script>

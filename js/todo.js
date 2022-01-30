@@ -2,15 +2,15 @@
 var theContainer=document.querySelector(".the-list");
 var parag =document.createElement("p");  
 
-var completedInput=document.querySelector(".comp-input");
-var theRadio =document.querySelector(".radio-button");
+var theInput=document.querySelector(".input");
+var theCheck =document.querySelector(".check-field");
 var input = document.querySelector(".input");
 $.theImageSrc = $(".header-image").attr("src");
 var content=[];
-var compArr = [];
-var actArr=[];
+//var compArr = [];
+//var actArr=[];
 
-var arr=[];
+/*var arr=[];
 var arrConv=[];
 var arr1=[];
 var arrX=[];
@@ -18,18 +18,66 @@ var arrClearing=[];
 var refArr=[];
 var indexArr=[];
 console.log(arr);
-console.log(arr1);
+console.log(arr1);*/
+//$(".all").addClass("shine");
+$(".all").css("color","#0d6efd");
+//All
+$(document).ready(function(){
+    
+    $(theInput).on("keyup",function(e){
+if(e.keyCode===13){
+    
+    if(theCheck.checked){
+        content.push({title:theInput.value ,status:"completed"});
+        theCheck.checked=false;
+        var theContainer=document.createElement("div"),
+            theMark=document.createElement("input"),
+            theTodo=document.createElement("p"),
+            theClear=document.createElement("span");
+            $(theContainer).appendTo(".the-content").addClass("comp-content");
+            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2");
+            $(theTodo).appendTo(theContainer).text(theInput.value).addClass("comp-todos col-8");
+            $(theClear).appendTo(theContainer).text("X").addClass("clear col-2 ms-auto").hide();
+    }else{
+        content.push({title:theInput.value ,status:"active"});
+        var theContainer=document.createElement("div"),
+            theMark=document.createElement("input"),
+            theTodo=document.createElement("p"),
+            theClear=document.createElement("span");
+            $(theContainer).appendTo(".the-content").addClass("act-content");
+            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2");
+            $(theTodo).appendTo(theContainer).text(theInput.value).addClass("act-todos col-8");
+            $(theClear).appendTo(theContainer).text("X").addClass("clear col-2 ms-auto").hide();
+    }
+    
+}
+    })
+})
+
+//change lists
+$(document).ready(function(){
+    $(".active-list").on("click",function(){
+        $(".check-field").attr("checked",false);
+        $(".comp-content").hide();
+        $(".act-content").show();
+    });
+    $(".completed").on("click",function(){
+        $(".check-field").attr("checked",true);
+        $(".act-content").hide();
+        $(".comp-content").show();
+    });
+    $(".all").on("click",function(){
+        $(".check-field").attr("checked",false);
+        $(".comp-content").show();
+        $(".act-content").show();
+    });
+
+})
 
 
 
 
-
-
-
-
-
-
-$(function(){
+/*$(function(){
     "use strict";
     $.theImageSrc = $(".header-image").attr("src");
     
@@ -39,12 +87,12 @@ $(function(){
         $(".navbar-nav button").eq(4).on("mouseleave",function(){
             $(this).css("color","darkgrey")
         })
-})
+})*/
 
 //
-$(".nav-link").eq(1).css("color","#0d6efd");
+//$(".nav-link").eq(1).css("color","#0d6efd");
 //starting content
-$(document).ready(function(){  
+/*$(document).ready(function(){  
     $(".input").on("keyup",function(e){
         if(e.keyCode===13){
            
@@ -124,7 +172,10 @@ $(document).ready(function(){
         
      });
      
-         
+     
+        
+        
+     
          $(newDiv).eq(index).on("mouseleave",function(){
              $(newDiv).eq(index).children().eq(2).css("visibility","hidden");
              $(this).children().eq(1).removeAttr("id");
@@ -132,28 +183,8 @@ $(document).ready(function(){
          $(".nav-link").eq(0).text($(content).length+"items");
          $(".counter").text($(content).length+"items");
         }
+
         
-        $(radio).on("click",function(){
-            $(this).parent().children().eq(1).css("textDecoration","line-through");
-            $(this).parent().attr("id","comp-list");
-            compArr.push($(this).next().text());
-            arrConv.push($(this).next().text());
-            var deletedIndex=content.map(function(e){
-               return e.title
-           }).indexOf($(this).next().text());
-           arrClearing.push(deletedIndex);
-          
-         
-            var delFromAct=actArr.indexOf($(this).next().text());
-            actArr.splice(delFromAct,1);
-            for(let index=0 ;index<content.length;index++){
-            if(content[index].title==$(this).parent().children().eq(1).text() &&content[index].status=="active"){
-                content[index].status="completed";
-            }
-             
-            }
-            
-    });
     
     $(clear).on("click",function(){            
         
@@ -207,8 +238,47 @@ $(document).ready(function(){
 
 
 
+$(document).ready(function(){
 
 
+$(".circle").on("click",function(){
+for(let index=0 ;index<content.length;index++){
+    
+    if(content[index].title==$(".circle").parent().children().eq(1).text() &&content[index].status=="active"){
+        content[index].status="completed";
+$(".circle").parent().children().eq(1).css("textDecoration","line-through");
+$(".circle").parent().attr("id","comp-list");
+compArr.push($(".circle").next().text());
+arrConv.push($(".circle").next().text());
+var deletedIndex=content.map(function(e){
+   return e.title
+}).indexOf($(".circle").next().text());
+arrClearing.push(deletedIndex);
+
+
+var delFromAct=actArr.indexOf($(".circle").next().text());
+actArr.splice(delFromAct,1);
+
+}if(content[index].title==$(".circle").parent().children().eq(1).text() &&content[index].status=="completed"){
+    content[index].status="active";
+    $(".circle").parent().children().eq(1).css("textDecoration","none");
+$(".circle").parent().attr("id","act-list");
+actArr.push($(".circle").next().text());
+/* arrConv.push($(this).next().text());
+var deletedIndex=content.map(function(e){
+   return e.title
+}).indexOf($(this).next().text());
+arrClearing.push(deletedIndex);*/
+
+
+/*var delFromComp=compArr.indexOf($(".circle").next().text());
+compArr.splice(delFromComp,1);
+}
+ 
+}
+
+});
+})
 
 //clear completed
 $(document).ready(function(){
@@ -276,7 +346,7 @@ $(document).ready(function(){
                  $(theTitle).appendTo(newDiv);
                 
                  $(newDiv).slideDown(2000).addClass("added-content")/*.attr("id","all-container")*/;
-                 theContainer.insertBefore(newDiv ,theContainer.lastElementChild);
+               /*  theContainer.insertBefore(newDiv ,theContainer.lastElementChild);
                  
                  $.theImageSrc = $(".header-image").attr("src");
                  if($.theImageSrc== "images/bg-desktop-light.jpg"){
@@ -659,17 +729,19 @@ $(document).ready(function(){
 })
 
 
-console.log("arrX",arrXcomp);
+console.log("arrX",arrXcomp);*/
 
 
 
 //title
 $(document).ready(function(){
     $(".header-img").css("width","100%").children().css("width","100%");
-    $(parag).appendTo(".header-container").text('T'+' '+'O'+' '+'D'+' '+'O').css({
+    $(parag).prependTo(".header-container").text('T'+' '+'O'+' '+'D'+' '+'O').addClass("justify-content-start").css({
         "color":"white",
         "fontFamily" :"arial",
+        "fontSize":"30px",
     });
+    $(".mode").addClass("ms-auto");
 });
 
    
@@ -678,14 +750,14 @@ $(document).ready(function(){
 
 
 //create footer
-function createFooter(){
+/*function createFooter(){
     'use strict';
     var p = document.createElement("p");
    $(".the-list").append(p);
     p.classList.add("footer");
     p.textContent="Drag and drop to record list";
 }
-createFooter();
+createFooter();*/
 
 
 
@@ -693,7 +765,7 @@ createFooter();
 
 
 //dark and light mode
-$(document).ready(function(){
+/*$(document).ready(function(){
 
 $(".mode").on("click",function(){
     "use strict";
@@ -773,8 +845,8 @@ $(".mode").on("click",function(){
 
 })
       
-})
+})*/
 
 console.log("content",content);
-console.log("compArr",compArr);
-console.log("actArr",actArr);
+//console.log("compArr",compArr);
+//console.log("actArr",actArr);

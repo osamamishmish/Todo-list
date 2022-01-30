@@ -16,26 +16,102 @@ body{
     margin-top:100px;
     
 }
-.row > *{
+/*.row > *{
     padding-left:0;
     padding-right:0;
-}
-.navbar{
-    width:100%;
+}*/
+.the-buttons{
     height:50px;
     background-color: hsl(235,24%,19%);
     color:hsl(234, 39%, 85%);
     
 }
-.nav-link{
+.the-buttons button{
     background-color:hsl(235,24%,19%);
     color:hsl(234, 39%, 85%);
     border :1px solid hsl(235,24%,19%);
-    font-size:18px;
+    font-size:17px;
     
 
 }
-.title{
+.the-buttons button:hover{
+    color:#0d6efd;
+}
+.clear-completed{
+    font-size:x-small;
+}
+.header-container{
+    display:flex;
+    flex-flow:row;
+    
+}
+.head-of-list{
+    background-color: hsl(235,24%,19%);
+   color:hsl(234, 39%, 85%);
+    display:flex;
+    flex-flow:row;
+    height:50px;
+}
+.input{
+    width:100%;
+    background-color:hsl(235,24%,19%);
+    color:hsl(234, 39%, 85%);
+    border:1px solid transparent;
+}
+.input:focus{
+    border:1px solid transparent;
+}
+.check-field{
+    
+    width:15px;
+    height:15px;
+    margin-top:18px;
+}
+.mode{
+    height:30px;
+}
+.footer{
+    color:hsl(234, 39%, 85%);
+    
+}
+.shine{
+    color:#0d6efd;
+}
+.comp-content ,.act-content{
+    height:50px;
+    background-color:hsl(235,24%,19%) ;
+    color:hsl(234, 39%, 85%);
+    width:100%;
+    display:flex;
+    flex-flow:row;
+    align-items:center;
+    
+}
+.checking{
+    justify-content:start;
+    margin-left: -40px;
+    margin-bottom:10px
+}
+.comp-todos{
+    text-decoration:line-through;
+}
+.act-todos{
+    text-decoration:none;
+}
+.clear{
+    margin-right:-65px;
+}
+/*.the-content{
+    display:flex;
+    flex-flow:row;
+}*/
+@media (max-width:1490px){
+    .the-buttons button{
+        font-size:12px;
+    }
+}
+/*.
+title{
     overflow-x: scroll;
 }
 @media (min-width: 1200px){
@@ -90,12 +166,12 @@ body{
 }
 
 .header-container{
-   display:grid;
+   display:grid
    grid-template-rows:100%;
     grid-template-columns: 40% 55% 5% ;
 }
 .header-container p{
-    grid-area:1/1/1/2;
+
     font-size:30px;
     margin-left:0px;
 }
@@ -294,7 +370,7 @@ cursor:pointer;
         margin-top:10px;
         width:100%;
       /*  overflow-x: scroll;*/
-    }
+  /*  }
     .header-container p {
         font-size:25px;
     }
@@ -329,7 +405,7 @@ cursor:pointer;
 .nav-color{
     color:#0d6efd;
 }
-@media (max-width:768px){
+/*@media (max-width:768px){
     .counter{
         display:visible;
     }
@@ -344,4 +420,4 @@ cursor:pointer;
     .the-menu{
         display:none;
     }
-}
+}*/
