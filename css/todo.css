@@ -101,6 +101,9 @@ body{
 .clear{
     margin-right:-65px;
 }
+.active{
+    color:#0d6efd;
+}
 /*.the-content{
     display:flex;
     flex-flow:row;

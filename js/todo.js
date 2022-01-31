@@ -6,7 +6,7 @@ var theInput=document.querySelector(".input");
 var theCheck =document.querySelector(".check-field");
 var input = document.querySelector(".input");
 $.theImageSrc = $(".header-image").attr("src");
-var content=[];
+//var content=[];
 //var compArr = [];
 //var actArr=[];
 
@@ -20,79 +20,262 @@ var indexArr=[];
 console.log(arr);
 console.log(arr1);*/
 //$(".all").addClass("shine");
+var theContainers=document.getElementById("the-container"),
+     theCounter=document.querySelector("counter");
 $(".all").css("color","#0d6efd");
+let index=0;
+let compCounter=0;
+let actCounter=0;
+$(".counter").text(index+"items");
 //All
 $(document).ready(function(){
     
     $(theInput).on("keyup",function(e){
 if(e.keyCode===13){
-    
+    index++;
+    $(".counter").text(index+"items");
+   /*var theAllCon=$("div[id='the-container']").length,
+        theHidden=theContainers.hasAttribute("display").length;
+theCounter.textContent=(theAllCon-theHidden)+"items";*/
+   // $(".counter".text($("div[id='the-container']").length+theContainers.hasAttribute("display").length+"items");
     if(theCheck.checked){
-        content.push({title:theInput.value ,status:"completed"});
+        
+       // content.push({title:theInput.value ,status:"completed"});
+       compCounter++;
         theCheck.checked=false;
         var theContainer=document.createElement("div"),
             theMark=document.createElement("input"),
             theTodo=document.createElement("p"),
             theClear=document.createElement("span");
-            $(theContainer).appendTo(".the-content").addClass("comp-content");
-            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2").attr("checked",true);
+            $(theContainer).appendTo(".the-content").addClass("comp-content").attr("id","the-container");
+            
             $(theTodo).appendTo(theContainer).text(theInput.value).addClass("comp-todos col-8");
             $(theClear).appendTo(theContainer).text("X").addClass("clear col-2 ms-auto").hide();
+            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2").attr("checked",true).on("click",function(){
+              //  $.theContent=$(this).siblings(".comp-todos").text();
+              //  if($(this).attr("checked")==true){
+               
+                $(this).attr("checked",false);
+                $(this).parent().children().eq(1).toggleClass("comp-todos act-todos");
+                $(this).parent().toggleClass("act-content comp-content");
+                compCounter--;
+                actCounter++;
+               /* let theChecked=content.map(function(e){
+                  //  if(e.title==$(this).parent().children().eq(1).text()&&e.status=="completed"){
+                        return e.title=$.theContent;
+                   // }
+                    
+                })
+                let theIndex=content.indexOf({title:theChecked});
+                console.log(theIndex);
+                content.splice(theIndex,1,{title:theChecked,status:"active"});
+                theChecked.length=1;
+                theChecked.unshift()
+                
+                console.log(theChecked);  */   
+            })
+            
     }else{
-        content.push({title:theInput.value ,status:"active"});
+        actCounter++;
+      //  content.push({title:theInput.value ,status:"active"});
         var theContainer=document.createElement("div"),
             theMark=document.createElement("input"),
             theTodo=document.createElement("p"),
             theClear=document.createElement("span");
-            $(theContainer).appendTo(".the-content").addClass("act-content");
-            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2");
+            
+            $(theContainer).appendTo(".the-content").addClass("act-content").attr("id","the-container");;
+            
             $(theTodo).appendTo(theContainer).text(theInput.value).addClass("act-todos col-8");
             $(theClear).appendTo(theContainer).text("X").addClass("clear col-2 ms-auto").hide();
+            $(theMark).attr("type","checkbox").prependTo(theContainer).addClass("checking col-2").attr("checked",false).on("click",function(){
+                actCounter--;
+                compCounter++;
+                $(this).attr("checked",true);
+                $(this).parent().children().eq(1).toggleClass("comp-todos act-todos");
+                $(this).parent().toggleClass("act-content comp-content");
+                
+            });
+               
+           // })
     }
-    
+   // $(".counter").text($("#the-container:visible").length+"items");
+    /*$(".all").on("click",function(){
+        $(".counter").text(content.length+"items");
+    })
+    $(".active-list").on("click",function(){
+        $(".counter").text($("div[class='act-content']").length+"items");
+    })
+    $(".completed").on("click",function(){
+        $(".counter").text($("div[class='comp-content']").length+"items");
+    })*/
 }
     })
 })
+//$(".counter").text($("div[class='act-content']").length+$("div[class='comp-content']").length);
 
-//change lists
+
+
+//switch between the buttons
 $(document).ready(function(){
     $(".active-list").on("click",function(){
+        $(".the-buttons").children().css("color","hsl(234, 39%, 85%)");
+        $(".the-buttons").children().eq(2).css("color","#0d6efd");
         $(".check-field").attr("checked",false);
         $(".comp-content").hide();
         $(".act-content").show();
+        
+      //  $(".counter").text($("div[class='act-content']").length+"items");
+      $(".counter").text(actCounter+"items");
+    // $(".counter").text($("div[class='act-content']").length+"items");
+      $(theInput).on("keyup",function(e){
+        if(e.keyCode===13){
+            
+            $(".counter").text(actCounter+"items");
+
+           
+        }
+    });
+    $(".clear-completed").on("click",function(){
+        // $(".comp-content").remove();
+         $("div[class='comp-content']").remove();
+         index=$("div[class='act-content']").length;
+         compCounter=0;
+     })
     });
     $(".completed").on("click",function(){
+        $(".the-buttons").children().css("color","hsl(234, 39%, 85%)");
+        $(".the-buttons").children().eq(3).css("color","#0d6efd");
         $(".check-field").attr("checked",true);
         $(".act-content").hide();
         $(".comp-content").show();
+      //  $(".counter").text($("div[class='comp-content']").length+"items");
+      $(".counter").text(compCounter+"items");
+      $(theInput).on("keyup",function(e){
+        if(e.keyCode===13){
+           // $(".counter").text($("div[class='comp-content']").length+"items");
+           
+           $(".counter").text(compCounter+"items");
+        }
+    });
+    $(".clear-completed").on("click",function(){
+        // $(".comp-content").remove();
+         $("div[class='comp-content']").remove();
+         index=$("div[class='act-content']").length;
+         compCounter=0;
+         $(".counter").text(compCounter+"items");
+     })
     });
     $(".all").on("click",function(){
+        $(".the-buttons").children().css("color","hsl(234, 39%, 85%)");
+        $(".the-buttons").children().eq(1).css("color","#0d6efd");
         $(".check-field").attr("checked",false);
         $(".comp-content").show();
         $(".act-content").show();
+        
+        $(".counter").text(index+"items");
+        $(theInput).on("keyup",function(e){
+            if(e.keyCode===13){
+                
+                $(".counter").text(index+"items");
+            }
+        });
+        $(".clear-completed").on("click",function(){
+            // $(".comp-content").remove();
+             $("div[class='comp-content']").remove();
+             index=$("div[class='act-content']").length;
+             compCounter=0;
+             $(".counter").text(index+"items");
+         })
+        //$(".counter").text($("div[class='act-content']").length+$("div[class='comp-content']").length);
+       // $(".counter").text($(".the-content").children().length+"items");
     });
+    $(".clear-completed").on("click",function(){
+         $("div[class='comp-content']").remove();
+         index=$("div[class='act-content']").length;
+         compCounter=0;
+         $(".counter").text(index+"items");
+     })
+    
+    
 
 })
-
-
+/*$(document).ready(function(){
+    $(".checking")
+  //  }if($(this).attr("checked")==false){
+        $(this).attr("checked",true);
+        $(this).parent().children().eq(1).toggleClass("comp-todos act-todos");
+        $(this).parent().toggleClass("act-content comp-content");
+       // let theSwitch=content.indexOf($(theTodo).text());
+       // console.log(theSwitch);
+        //content.splice(theSwitch,1,{title:$(this).parent().children().eq(1).text(),status:"completed"});
+  //  }
+        
+    })
+})*/
+/*var theCheckingField=document.querySelector(".checking");
 $(document).ready(function(){
-    $(".checking").click(function(){
-        if($(this).prop("checked") == true){
-           var indexOfComp=content.indexOf($(this).siblings().next().text());
-           content[indexOfComp].status="active";
-           $(".checking").siblings().next().toggleClass("comp-todos act-todos");
-           $(".checking").parent().toggleClass("comp-content act-content");
-           $(this).prop("checked") = false;
+   for(let index=0 ;index<content.length;index++){
+    if($(".checking").eq(index).attr("checked")==true){
+        $(this).on("click",function(){
+            $(this).attr("checked",false);
+            $(this).parent().addClass("act-content");
+            $(this).parent().removeClass("comp-content");
+            $(this).siblings().next().addClass("act-todos");
+            $(this).siblings().next().removeClass("comp-todos");
+           // for(let index=0 ;index<content.length;index++){
+               // if($(this).siblings().next().text()==content[index].length){
+                    content[index].status="active";
+                //}
+          //  }
+        })
+        }if($(".checking").eq(index).attr("checked")==false){
+            $(this).on("click",function(){
+
+            
+            $(this).attr("checked",true);
+            $(this).parent().removeClass("act-content");
+            $(this).parent().addClass("comp-content");
+            $(this).siblings().next().removeClass("act-todos");
+            $(this).siblings().next().addClass("comp-todos");
+           // for(let index=0 ;index<content.length;index++){
+                if($(this).siblings().next().text()==content[index].title){
+                    content[index].status="completed";
+                }
+          //  }
+        })
         }
-        else if($(this).prop("checked") == false){
-            var indexOfAct=content.indexOf($(this).siblings().next().text());
-           content[indexOfAct].status="completed";
-           $(".checking").siblings().next().toggleClass("comp-todos act-todos");
-           $(".checking").parent().toggleClass("comp-content act-content");
-           $(this).prop("checked") = true;
+        
+    }
+   
+})*/
+
+/*
+$(document).ready(function(){
+   // for(let index=0 ;index<content.length;index++){
+
+    
+    $(".checking").on("click",function(){
+        if(this.checked== true){
+            console.log("mmmmm");
+          // var indexOfComp=content.indexOf($(this).siblings().next().text());
+          $(this).siblings().next().toggleClass("comp-todos act-todos");
+           $(this).parent().toggleClass("comp-content act-content");
+           $(this).attr("checked") = false;
+           content[index].status="active";
+           
+        }
+        else if(this.checked == false){
+            console.log("nnnnnn")
+           // var indexOfAct=content.indexOf($(this).siblings().next().text());
+           $(this).siblings().next().toggleClass("comp-todos act-todos");
+           $(this).parent().toggleClass("comp-content act-content");
+           $(this).attr("checked") = true;
+           content[index].status="completed";
+           
         }
     });
-})
+//}
+})*/
 
 /*$(document).ready(function(){
     
@@ -885,6 +1068,6 @@ $(".mode").on("click",function(){
       
 })*/
 
-console.log("content",content);
+//console.log("content",content);
 //console.log("compArr",compArr);
 //console.log("actArr",actArr);
