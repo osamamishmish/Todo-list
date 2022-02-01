@@ -106,6 +106,14 @@ body{
     background-color:hsl(233, 14%, 35%);
     cursor:pointer;
 }
+.light-mode{
+    background-color: hsl(0, 0%, 98%);
+    color:black;
+}
+.menu-light{
+    background-color: hsl(0, 0%, 98%);
+    color:white;
+}
 /*.the-content{
     display:flex;
     flex-flow:row;

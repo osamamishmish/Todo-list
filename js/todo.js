@@ -5,7 +5,6 @@ var parag =document.createElement("p");
 var theInput=document.querySelector(".input");
 var theCheck =document.querySelector(".check-field");
 var input = document.querySelector(".input");
-$.theImageSrc = $(".header-image").attr("src");
 
 
 
@@ -126,7 +125,66 @@ $(document).ready(function(){
 });
 
    
- 
+ //dark and light mode
+ $(document).ready(function(){
+    // $(function(){
+
+     
+    
+     $(".mode").on("click",function(){
+       //  $(this).off("click");
+       $.theImageSrc = $(".header-image").attr("src");
+       if($.theImageSrc=="images/bg-desktop-dark.jpg"){
+             $("body").css("backgroundColor","white");
+             $(".mode").attr("src","images/icon-moon.svg");
+             $(".header-image").attr("src","images/bg-desktop-light.jpg");
+             $(".head-of-list").addClass("light-mode");
+             $(".head-of-list").children().addClass("light-mode");
+             $(".the-buttons").addClass("light-mode");
+             $(".footer").css("color","black");
+           //  $(".the-buttons").addClass("light-mode");
+             $(".counter,.clear-completed,.all,.active-list,.completed").css({
+                 "backgroundColor":"hsl(0, 0%, 98%)",
+                 "color":"black",
+                 "border":"none",
+             })
+             $(".comp-content").addClass("light-mode").css("borderBottom","1px solid black");
+                    $(".act-content").addClass("light-mode").css("borderBottom","1px solid black");
+             $(".input").on("keyup",function(e){
+                if(e.keyCode===13){
+                    $(".comp-content").addClass("light-mode").css("borderBottom","1px solid black");
+                    $(".act-content").addClass("light-mode").css("borderBottom","1px solid black");
+                }
+             })
+            
+         }if($.theImageSrc=="images/bg-desktop-light.jpg"){
+          // $(".mode").on("click",function(){
+
+            
+            $("body").css("backgroundColor","hsl(235, 21%, 11%)");
+            $(".mode").attr("src","images/icon-sun.svg");
+            $(".header-image").attr("src","images/bg-desktop-dark.jpg");
+            $(".head-of-list").removeClass("light-mode");
+            $(".head-of-list").children().removeClass("light-mode");
+            $(".the-buttons").removeClass("light-mode");
+            $(".footer").css("color","black");
+            $(".counter,.clear-completed,.all,.active-list,.completed").css({
+                "backgroundColor":"hsl(235,24%,19%)",
+                "color":"hsl(234, 39%, 85%)",
+                "border":"none",
+            })
+            $(".comp-content").removeClass("light-mode").css("borderBottom","1px solid black");
+                   $(".act-content").removeClass("light-mode").css("borderBottom","1px solid black");
+            $(".input").on("keyup",function(e){
+               if(e.keyCode===13){
+                   $(".comp-content").removeClass("light-mode").css("borderBottom","1px solid black");
+                   $(".act-content").removeClass("light-mode").css("borderBottom","1px solid black");
+               }
+       //     })
+        })
+        }
+    })
+ })
 
 
 
