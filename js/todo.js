@@ -53,6 +53,7 @@ if(e.keyCode===13){
         $(this).addClass("hover");
         $(this).children().eq(2).show().on("click",function(){
             $(theContainer).remove();    
+            $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
         });
     })
     $(theContainer).on("mouseleave",function(){
@@ -76,7 +77,7 @@ $(document).ready(function(){
         $(".comp-content").hide();
         $(".act-content").show();
         $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
-    $(".clear-completed").on("click",function(){
+        $(".clear-completed").on("click",function(){
          $("div[class='comp-content']").remove();
          $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
      })
@@ -88,7 +89,7 @@ $(document).ready(function(){
         $(".act-content").hide();
         $(".comp-content").show();
         $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
-    $(".clear-completed").on("click",function(){
+        $(".clear-completed").on("click",function(){
          $("div[class='comp-content']").remove();
          $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
      })
@@ -125,14 +126,13 @@ $(document).ready(function(){
 });
 
    
+
+
+
  //dark and light mode
  $(document).ready(function(){
-    // $(function(){
-
-     
     
      $(".mode").on("click",function(){
-       //  $(this).off("click");
        $.theImageSrc = $(".header-image").attr("src");
        if($.theImageSrc=="images/bg-desktop-dark.jpg"){
              $("body").css("backgroundColor","white");
@@ -142,23 +142,34 @@ $(document).ready(function(){
              $(".head-of-list").children().addClass("light-mode");
              $(".the-buttons").addClass("light-mode");
              $(".footer").css("color","black");
-           //  $(".the-buttons").addClass("light-mode");
              $(".counter,.clear-completed,.all,.active-list,.completed").css({
                  "backgroundColor":"hsl(0, 0%, 98%)",
                  "color":"black",
                  "border":"none",
              })
-             $(".comp-content").addClass("light-mode").css("borderBottom","1px solid black");
-                    $(".act-content").addClass("light-mode").css("borderBottom","1px solid black");
+             $(".the-buttons button").on("click",function(){
+                $(this).css("color","#0d6efd");
+                $(this).siblings().css("color","black");
+            })
+             $(".comp-content,.act-content").css({
+                 "borderBottom":"1px solid black",
+                 "backgroundColor": "hsl(0, 0%, 98%)",
+                 "color":"black",
+                });
              $(".input").on("keyup",function(e){
                 if(e.keyCode===13){
-                    $(".comp-content").addClass("light-mode").css("borderBottom","1px solid black");
-                    $(".act-content").addClass("light-mode").css("borderBottom","1px solid black");
+                    $(".comp-content ,.act-content").css({
+                        "borderBottom":"1px solid black",
+                        "backgroundColor": "hsl(0, 0%, 98%)",
+                        "color":"black",
+                    });
+                   
+                    $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
                 }
              })
             
          }if($.theImageSrc=="images/bg-desktop-light.jpg"){
-          // $(".mode").on("click",function(){
+          
 
             
             $("body").css("backgroundColor","hsl(235, 21%, 11%)");
@@ -167,20 +178,34 @@ $(document).ready(function(){
             $(".head-of-list").removeClass("light-mode");
             $(".head-of-list").children().removeClass("light-mode");
             $(".the-buttons").removeClass("light-mode");
-            $(".footer").css("color","black");
+            $(".footer").css("color","white");
             $(".counter,.clear-completed,.all,.active-list,.completed").css({
                 "backgroundColor":"hsl(235,24%,19%)",
                 "color":"hsl(234, 39%, 85%)",
                 "border":"none",
             })
-            $(".comp-content").removeClass("light-mode").css("borderBottom","1px solid black");
-                   $(".act-content").removeClass("light-mode").css("borderBottom","1px solid black");
+            $(".the-buttons button").on("click",function(){
+                $(this).css("color","#0d6efd");
+                $(this).siblings().css("color","hsl(234, 39%, 85%)");
+            })
+            $(".counter").css("color","#0d6efd");
+           
+            $(".comp-content,.act-content").css({
+                "backgroundColor":"hsl(235,24%,19%)",
+                "color":"hsl(234, 39%, 85%)",
+                "borderBottom":"1px solid hsl(234, 39%, 85%)",
+            });
+
             $(".input").on("keyup",function(e){
                if(e.keyCode===13){
-                   $(".comp-content").removeClass("light-mode").css("borderBottom","1px solid black");
-                   $(".act-content").removeClass("light-mode").css("borderBottom","1px solid black");
+                   $(".comp-content ,.act-content").css({
+                       "borderBottom":"1px solid hsl(234, 39%, 85%)",
+                       "backgroundColor": "hsl(235,24%,19%)",
+                        "color":"white",
+                    });
+                
+                   $(".counter").text($("div[class='comp-content']:visible").length+$("div[class='act-content']:visible").length+"items");
                }
-       //     })
         })
         }
     })
@@ -192,89 +217,3 @@ $(document).ready(function(){
 
 
 
-//dark and light mode
-/*$(document).ready(function(){
-
-$(".mode").on("click",function(){
-    "use strict";
-    $.theImageSrc = $(".header-image").attr("src");
-    if($.theImageSrc=="images/bg-desktop-dark.jpg"){
-    $(".mode").attr("src","images/icon-moon.svg");
-    $(".header-image").attr("src","images/bg-desktop-light.jpg");
-    $("body").css("backgroundColor","hsl(236, 33%, 92%)");
-    $(".head-of-list").css("backgroundColor","hsl(0, 0%, 98%)");
-    $(".input").css("backgroundColor","hsl(0, 0%, 98%)");
-    $(".input").css("color","black");
-    $(".navbar").css("backgroundColor","hsl(0, 0%, 98%)");
-    $(".navbar-nav button").css({
-        "border":"1px solid hsl(0, 0%, 98%)",
-        "backgroundColor":"hsl(0, 0%, 98%)",
-        "color":"black",
-    });
-    $(".nav-link").css("color","black");
-    $(".navbar-toggler-icon").css("backgroundColor","lightgrey");
-    $(".added-one").css({
-        "backgroundColor":"hsl(0, 0%, 98%)",
-        "color":"black",
-        "borderBottom":"1px solid lightgrey",   
-    })
-    $(".added-content").css({
-        "backgroundColor":"hsl(0, 0%, 98%)",
-        "color":"black",
-        "borderBottom":"1px solid lightgrey",   
-    })
-    $(".the-added, .added-one ,.the-added-dark ,.added-content").on("mouseenter",function(){
-        $(this).css({
-            "backgroundColor":"hsl(0, 0%, 98%)",
-        })
-    })
-    $(".the-added, .added-one ,.the-added-dark ,.added-content").on("mouseleave",function(){
-        $(this).css({
-            "backgroundColor":"hsl(0, 0%, 98%)",
-        })
-    })
-
-   
-}if($.theImageSrc=="images/bg-desktop-light.jpg"){
-        $(".mode").attr("src","images/icon-sun.svg");
-        $(".header-image").attr("src","images/bg-desktop-dark.jpg");
-        $("body").css("backgroundColor","hsl(235, 21%, 11%)");
-        $(".head-of-list").css("backgroundColor","hsl(235,24%,19%)");
-        $(".input").css("backgroundColor","hsl(235,24%,19%)");
-        $(".input").css("color","lightgrey");
-        
-     $(".navbar-nav button").css({
-        "border":"1px solid hsl(235,24%,19%)",
-        "backgroundColor":"hsl(235,24%,19%)",
-        "color":"lightgrey",
-    });
-   
-    $(".navbar-toggler-icon").css("color","black");
-        $(".navbar").css("backgroundColor","hsl(235,24%,19%)");
-        $(".added-one").css({
-            "backgroundColor":"hsl(235,24%,19%)",
-            "color":"lightgrey",
-        })
-        $(".added-content").css({
-            "backgroundColor":"hsl(235,24%,19%)",
-            "color":"lightgrey",
-        }) 
-        $(".the-added, .added-one ,.the-added-dark ,.added-content").on("mouseenter",function(){
-            $(this).css({
-                "backgroundColor":"hsl(233, 14%, 35%)",
-            })
-        })
-        $(".the-added, .added-one ,.the-added-dark ,.added-content").on("mouseleave",function(){
-            $(this).css({
-                "backgroundColor":"hsl(235,24%,19%)",
-            })
-        })
-}
-
-})
-      
-})*/
-
-//console.log("content",content);
-//console.log("compArr",compArr);
-//console.log("actArr",actArr);
