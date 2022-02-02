@@ -33,6 +33,9 @@ body{
 .the-buttons button:hover{
     color:#0d6efd;
 }
+.counter:hover{
+    cursor:default;
+}
 .clear-completed{
     font-size:x-small;
 }
