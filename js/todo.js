@@ -15,6 +15,7 @@ $(document).ready(function(){
     
     $(theInput).on("keyup",function(e){
 if(e.keyCode===13){
+    
     if(theCheck.checked){
         theCheck.checked=false;
         var theContainer=document.createElement("div"),
@@ -32,6 +33,7 @@ if(e.keyCode===13){
                 $(this).parent().toggleClass("act-content comp-content");
              
             })
+            $(theInput).val("");
     }else{
         var theContainer=document.createElement("div"),
             theMark=document.createElement("input"),
@@ -48,6 +50,7 @@ if(e.keyCode===13){
                 $(this).parent().toggleClass("act-content comp-content");
                 
             });  
+            $(theInput).val("");
     }
     $(theContainer).on("mouseenter",function(){
         $(this).addClass("hover");
